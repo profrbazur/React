@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { TaskCard } from './TaskCard';
 import { BoxCard } from './BoxCard';
+import './TaskList.css';
 
 export const TaskList = () => {
   const [tasks, setTasks] = useState([
@@ -9,14 +10,19 @@ export const TaskList = () => {
     { id: 7581, name: 'Watch Lectures', completed: false },
   ]);
   const [show, setShow] = useState(true);
-
+  const styles = {
+    color: '#be3434',
+    border: '1px solid #be3434',
+    borderRadius: '5px',
+    padding: '20px',
+  };
   function handleDelete(id) {
     setTasks(tasks.filter((task) => task.id !== id));
   }
 
   return (
-    <>
-      <h1>Task List</h1>
+    <section className="tasklist">
+      <h1 style={styles}>Task List</h1>
       <ul>
         <button className="trigger" onClick={() => setShow(!show)}>
           Toggle
@@ -27,7 +33,7 @@ export const TaskList = () => {
           ))}
       </ul>
       <BoxCard result="success">
-        <p className="title">Lorem Success</p>
+        <p className="title">Offer Notification</p>
         <p className="description">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis,
           vel!
@@ -35,18 +41,12 @@ export const TaskList = () => {
       </BoxCard>
 
       <BoxCard result="warning">
-        <p className="title">Lorem Warning</p>
+        <p className="title">Cookie Notification</p>
         <p className="description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis,
-          vel!
-        </p>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta
-          quaerat sunt, maiores amet nobis mollitia possimus delectus, impedit
-          non incidunt, est explicabo numquam sit aliquam autem. Laboriosam qui
-          numquam itaque.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi,
+          suscipit.
         </p>
       </BoxCard>
-    </>
+    </section>
   );
 };
