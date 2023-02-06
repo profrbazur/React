@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { TaskCard } from './TaskCard';
+import { BoxCard } from './BoxCard';
 
-export const TaskList = () => {
+export const TaskList = ({ info }) => {
   const [tasks, setTasks] = useState([
     { id: 1030, name: 'Record React Lectures', completed: true },
     { id: 4029, name: 'Edit React Lectures', completed: false },
@@ -21,19 +23,35 @@ export const TaskList = () => {
         </button>
         {show &&
           tasks.map((task) => (
-            <li
+            <TaskCard
               key={task.id}
-              className={task.completed ? 'completed' : 'incomplete'}
-            >
-              <span>
-                {task.id} - {task.name}
-              </span>
-              <button onClick={() => handleDelete(task.id)} className="delete">
-                Delete
-              </button>
-            </li>
+              info={info}
+              task={task}
+              handleDelete={handleDelete}
+            />
           ))}
       </ul>
+      <BoxCard result="success">
+        <p className="title">Lorem Success</p>
+        <p className="description">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis,
+          vel!
+        </p>
+      </BoxCard>
+
+      <BoxCard result="warning">
+        <p className="title">Lorem Warning</p>
+        <p className="description">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis,
+          vel!
+        </p>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta
+          quaerat sunt, maiores amet nobis mollitia possimus delectus, impedit
+          non incidunt, est explicabo numquam sit aliquam autem. Laboriosam qui
+          numquam itaque.
+        </p>
+      </BoxCard>
     </>
   );
 };
