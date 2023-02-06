@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { TaskCard } from './TaskCard';
 import { BoxCard } from './BoxCard';
 
-export const TaskList = ({ info }) => {
+export const TaskList = () => {
   const [tasks, setTasks] = useState([
     { id: 1030, name: 'Record React Lectures', completed: true },
     { id: 4029, name: 'Edit React Lectures', completed: false },
@@ -23,12 +23,7 @@ export const TaskList = ({ info }) => {
         </button>
         {show &&
           tasks.map((task) => (
-            <TaskCard
-              key={task.id}
-              info={info}
-              task={task}
-              handleDelete={handleDelete}
-            />
+            <TaskCard key={task.id} task={task} handleDelete={handleDelete} />
           ))}
       </ul>
       <BoxCard result="success">
